@@ -46,7 +46,7 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
-                            modules: true,
+                            modules: false,
                             localIdentName: '[name]__[local]__[hash:base64:8]',
                             sourceMap: true,
                             importLoaders: 1,
@@ -65,7 +65,18 @@ module.exports = {
                         }
                     }
                 ]
-            }
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                  {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[path][name].[ext]'
+                      }
+                  }
+                ]
+              }
         ]
     },
     plugins: [htmlPlugins, BundlePlugin]
