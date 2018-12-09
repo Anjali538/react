@@ -1,0 +1,41 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --progress --config ./webpack.config.js --port 8080 --mode development --open --hot",
+    "build-dev": "npm run lint && webpack --config ./webpack.config.js --progress -d -w && npm run deploy-local",
+    "build-prod": "npm run lint && webpack --config ./webpack.config.js --progress -p",
+    "analyze": "webpack-bundle-analyzer --port 8888 --mode static  dist/stats.json",
+    "lint": "eslint src/**/*.js --ext src/**/*.css --ext src/**/*.png --ext src/**/*.otf --fix",
+    "deploy-local": "http-server -p 7000 dist/",
+    "deploy-prod": "http-server NODE_ENV=production -p 8000 dist/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "eslint": "^5.10.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^2.0.0",
+    "eslint": "^5.10.0",
+    "eslint-plugin-react": "^7.11.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "http-server": "^0.11.1",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.27.1",
+    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  }
+}
